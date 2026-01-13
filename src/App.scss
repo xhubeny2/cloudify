@@ -1,0 +1,13 @@
+@use './styles/variables' as *;
+@use './styles/mixins' as *;
+
+#root {
+  max-width: $breakpoint-xl;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.card {
+  padding: $spacing-xl;
+}

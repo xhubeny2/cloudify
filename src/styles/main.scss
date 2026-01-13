@@ -1,0 +1,85 @@
+// ======================
+// Imports
+// ======================
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'reset';
+
+// ======================
+// Root & Global Styles
+// ======================
+:root {
+  font-family: $font-family-base;
+  line-height: $line-height-base;
+  font-weight: $font-weight-normal;
+
+  color-scheme: light dark;
+  color: $color-text-dark;
+  background-color: $color-background-dark;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+// ======================
+// Typography
+// ======================
+h1 {
+  font-size: $font-size-xxl;
+  line-height: $line-height-heading;
+}
+
+a {
+  font-weight: $font-weight-medium;
+  color: $color-primary;
+
+  &:hover {
+    color: $color-primary-hover;
+  }
+}
+
+// ======================
+// Buttons
+// ======================
+button {
+  border-radius: $border-radius-md;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  font-family: inherit;
+  background-color: $color-button-bg-dark;
+  cursor: pointer;
+  transition: border-color $transition-base;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+}
+
+// ======================
+// Light Mode
+// ======================
+@media (prefers-color-scheme: light) {
+  :root {
+    color: $color-text-light;
+    background-color: $color-background-light;
+  }
+
+  a:hover {
+    color: $color-primary-light;
+  }
+
+  button {
+    background-color: $color-button-bg-light;
+  }
+}

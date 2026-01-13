@@ -1,15 +1,16 @@
-import "./App.css";
+import "./App.scss";
 import { WeatherComp } from "./components/weather/WeatherComp";
-import InputWrapper from "./components/InputWrapper.tsx";
+import Header from "@/components/layout/Header";
 
 function App() {
   return (
     <main>
-      <div>
-        <h1>Cloudify</h1>
-        <InputWrapper />
-        <WeatherComp />
-      </div>
+      <Header />
+      {/*<div>*/}
+      {/*  <h1>Cloudify</h1>*/}
+      {/*  <InputWrapper />*/}
+      <WeatherComp />
+      {/*</div>*/}
     </main>
   );
 }

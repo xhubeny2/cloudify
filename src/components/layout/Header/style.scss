@@ -1,0 +1,25 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $color-background-dark;
+  width: 100%;
+  padding: $spacing-md;
+}
+
+.logo-wrapper {
+  @include flex-center;
+  justify-self: start;
+  gap: $spacing-md;
+}
+
+.logo {
+  height: 2rem;
+}
+

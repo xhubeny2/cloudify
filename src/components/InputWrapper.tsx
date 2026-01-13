@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store";
-import { initCitiesRequest, searchCitiesRequest } from "../store/cities";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { initCitiesRequest, searchCitiesRequest } from "@/store/cities";
 
 export function InputWrapper() {
   const dispatch = useAppDispatch();
@@ -11,7 +11,6 @@ export function InputWrapper() {
   }, [dispatch]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Handle input change logic here
     console.log("handleInputChange", e.target.value);
     dispatch(searchCitiesRequest(e.currentTarget.value));
   };
