@@ -1,5 +1,5 @@
 import "./style.scss";
-import InputWrapper from "@/components/InputWrapper.tsx";
+import InputWrapper from "@/components/search";
 
 function Header() {
   return (

@@ -1,0 +1,76 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+.search-icon {
+  position: absolute;
+  left: $spacing-sm;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: $color-text-muted;
+  pointer-events: none;
+  transition: color $transition-base;
+}
+
+.input-wrapper:focus-within .search-icon {
+  color: $color-primary;
+}
+
+.city-input {
+  width: 100%;
+  padding: $spacing-sm $spacing-md $spacing-sm calc($spacing-sm + 1.5rem);
+  font-size: $font-size-base;
+  font-family: inherit;
+  color: $color-text-dark;
+  background-color: $color-button-bg-dark;
+  border: 1px solid transparent;
+  border-radius: $border-radius-lg;
+  outline: none;
+  transition: all $transition-base;
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+
+  &:hover {
+    background-color: lighten($color-button-bg-dark, 5%);
+  }
+
+  &:focus {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.2);
+  }
+}
+
+.results-list {
+  position: absolute;
+  top: calc(100% + $spacing-xs);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: $spacing-xs 0;
+  list-style: none;
+  background-color: $color-button-bg-dark;
+  border: 1px solid rgba($color-primary, 0.2);
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-lg;
+  max-height: 300px;
+  overflow-y: auto;
+
+  li {
+    padding: $spacing-sm $spacing-md;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: rgba($color-primary, 0.1);
+    }
+  }
+}
