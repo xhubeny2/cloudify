@@ -3,7 +3,7 @@ import type {
   WeatherState,
   WeatherForecastResponse,
   FetchWeatherPayload,
-} from "./types";
+} from "../types.ts";
 
 const initialState: WeatherState = {
   forecast: null,

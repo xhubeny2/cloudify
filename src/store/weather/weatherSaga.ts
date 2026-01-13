@@ -5,9 +5,8 @@ import {
   fetchWeatherFailure,
 } from ".";
 import { fetchForecast } from "../../api/weather";
-
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { FetchWeatherPayload, WeatherForecastResponse } from ".";
+import type { FetchWeatherPayload, WeatherForecastResponse } from "../types";
 
 // Worker saga - async operations and putting actions to the store
 function* fetchWeatherSaga(action: PayloadAction<FetchWeatherPayload>) {
@@ -32,5 +31,3 @@ function* fetchWeatherSaga(action: PayloadAction<FetchWeatherPayload>) {
 export function* watchWeather() {
   yield takeLatest(fetchWeatherRequest.type, fetchWeatherSaga);
 }
-
-export default watchWeather;

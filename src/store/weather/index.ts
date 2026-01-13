@@ -1,5 +1,4 @@
 // Weather module exports
-
 export { default as weatherReducer } from "./weatherSlice";
 export {
   fetchWeatherRequest,
@@ -8,4 +7,3 @@ export {
   clearWeather,
 } from "./weatherSlice";
 export { watchWeather } from "./weatherSaga";
-export * from "./types";
