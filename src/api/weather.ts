@@ -1,4 +1,4 @@
-import type { WeatherForecastResponse } from "../store/weather";
+import type { WeatherForecastResponse } from "@/store/types";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
@@ -27,7 +27,7 @@ export async function fetchForecast({
 
   if (!response.ok) {
     throw new Error(
-      `Weather API error: ${response.status} ${response.statusText}`
+      `Weather API error: ${response.status} ${response.statusText}`,
     );
   }
 
