@@ -170,6 +170,7 @@
   grid-area: day;
   font-weight: $font-weight-medium;
   white-space: nowrap;
+  text-transform: capitalize;
 }
 
 .forecast-grid__icon {

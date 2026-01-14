@@ -35,7 +35,7 @@ function groupByDay(list: ForecastItem[]): DayForecast[] {
 
     days.push({
       date,
-      label: date.toLocaleDateString("en-EN", {
+      label: date.toLocaleDateString(undefined, {
         weekday: "long",
         day: "numeric",
         month: "long",

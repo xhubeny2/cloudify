@@ -10,7 +10,7 @@ export function TemperatureChart({ items }: TemperatureChartProps) {
   const chartData = useMemo(
     () =>
       items.map((item) => ({
-        time: new Date(item.dt * 1000).toLocaleTimeString("en-EN", {
+        time: new Date(item.dt * 1000).toLocaleTimeString(undefined, {
           hour: "2-digit",
           minute: "2-digit",
         }),
