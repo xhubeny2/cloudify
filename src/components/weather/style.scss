@@ -1,0 +1,108 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+// ======================
+// CurrentWeather
+// ======================
+.current-weather {
+  text-align: center;
+}
+
+.current-weather__location {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  white-space: pre;
+  margin-bottom: $spacing-sm;
+}
+
+.current-weather__city {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-dark;
+}
+
+.current-weather__country {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+}
+
+.current-weather__main {
+  @include flex-center;
+}
+
+.current-weather__temp {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-normal;
+  color: $color-text-dark;
+}
+
+.current-weather__description {
+  @include flex-center;
+  color: $color-text-muted;
+  text-transform: capitalize;
+}
+
+.current-weather__details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
+  font-size: $font-size-sm;
+}
+
+.current-weather__detail-label {
+  color: $color-text-muted;
+}
+
+.current-weather__detail-value {
+  font-weight: $font-weight-medium;
+}
+
+// ======================
+// WeatherIcon
+// ======================
+.weather-icon {
+  &--sm {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &--md {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &--lg {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+// ======================
+// WeatherContainer
+// ======================
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  padding: $spacing-sm;
+
+  @include tablet-up {
+    padding: $spacing-md;
+  }
+}
+
+.weather-container__empty {
+  text-align: center;
+  padding: $spacing-xxl 0;
+}
+
+.weather-container__empty-text {
+  color: $color-text-muted;
+  margin-bottom: $spacing-md;
+}
+
+.weather-container__actions {
+  text-align: center;
+}
