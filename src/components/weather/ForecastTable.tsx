@@ -1,7 +1,10 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, lazy, Suspense } from "react";
 import { ForecastRow, type DayForecast } from "./ForecastRow";
-import { TemperatureChart } from "./TemperatureChart";
-import { Card, CardContent, Dialog } from "../ui";
+import { Card, CardContent, Dialog, Loader } from "../ui";
+
+const TemperatureChart = lazy(() =>
+  import("./TemperatureChart").then((m) => ({ default: m.TemperatureChart })),
+);
 import type { ForecastItem } from "@/store/types";
 import "./style.scss";
 
@@ -46,7 +49,7 @@ function groupByDay(list: ForecastItem[]): DayForecast[] {
       description: midday.weather[0].description,
       precipitation: items.reduce((sum, i) => sum + (i.rain?.["3h"] || 0), 0),
       windSpeed: Math.round(
-        items.reduce((sum, i) => sum + i.wind.speed, 0) / items.length
+        items.reduce((sum, i) => sum + i.wind.speed, 0) / items.length,
       ),
       items,
     });
@@ -97,7 +100,9 @@ export function ForecastTable({ list }: ForecastTableProps) {
         title={selectedDay !== null ? days[selectedDay].label : ""}
       >
         {selectedDay !== null && (
-          <TemperatureChart items={days[selectedDay].items} />
+          <Suspense fallback={<Loader size="sm" />}>
+            <TemperatureChart items={days[selectedDay].items} />
+          </Suspense>
         )}
       </Dialog>
     </>

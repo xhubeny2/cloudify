@@ -2,12 +2,13 @@ import "./style.scss";
 
 interface LoaderProps {
   className?: string;
+  size?: "sm" | "lg";
 }
 
-export function Loader({ className = "" }: LoaderProps) {
+export function Loader({ className = "", size = "lg" }: LoaderProps) {
   return (
     <div className={`loader ${className}`.trim()}>
-      <div className="loader__spinner" />
+      <div className={`loader__spinner loader__spinner--${size}`} />
     </div>
   );
 }
