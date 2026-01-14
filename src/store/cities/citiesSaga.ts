@@ -32,7 +32,7 @@ function createWorkerChannel(
 
 function* initCitiesSaga(worker: Worker): SagaIterator {
   try {
-    // load city data from local JSON file
+    // load city data from local JSON file (downloaded at build time)
     const response: Response = yield call(fetch, "./city.list.json");
     const rawData: City[] = yield call([response, "json"]);
 

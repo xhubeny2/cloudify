@@ -35,3 +35,6 @@ pnpm-debug.log*
 
 # Vite specific
 *.timestamp-*
+
+# Downloaded at build time
+public/city.list.json
