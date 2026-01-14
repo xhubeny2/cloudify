@@ -1,6 +1,7 @@
 import "./style.scss";
 import InputWrapper from "@/components/search";
 import logoSvg from "@/assets/logo.svg";
+import { LocationButton } from ".";
 
 export function Header() {
   return (
@@ -10,6 +11,7 @@ export function Header() {
         <h2>Cloudify</h2>
       </div>
       <InputWrapper />
+      <LocationButton />
     </header>
   );
 }

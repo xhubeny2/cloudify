@@ -30,36 +30,41 @@ export function useGeolocation() {
         },
   );
 
-  const getCurrentPosition = useCallback(() => {
-    if (!isSupported) return;
+  const getCurrentPosition = useCallback(
+    (onSuccess?: (coords: Coordinates) => void) => {
+      if (!isSupported) return;
 
-    setState((prev) => ({ ...prev, loading: true, error: null }));
+      setState((prev) => ({ ...prev, loading: true, error: null }));
 
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setState({
-          coordinates: {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const coords = {
             lat: position.coords.latitude,
             lon: position.coords.longitude,
-          },
-          loading: false,
-          error: null,
-        });
-      },
-      (error) => {
-        setState({
-          coordinates: DEFAULT_COORDINATES,
-          loading: false,
-          error: error.message,
-        });
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 10000,
-        maximumAge: 300000, // 5 mins cache
-      },
-    );
-  }, [isSupported]);
+          };
+          setState({
+            coordinates: coords,
+            loading: false,
+            error: null,
+          });
+          onSuccess?.(coords);
+        },
+        (error) => {
+          setState({
+            coordinates: DEFAULT_COORDINATES,
+            loading: false,
+            error: error.message,
+          });
+        },
+        {
+          enableHighAccuracy: false,
+          timeout: 10000,
+          maximumAge: 300000, // 5 mins cache
+        },
+      );
+    },
+    [isSupported],
+  );
 
   useEffect(() => {
     if (isSupported) {
