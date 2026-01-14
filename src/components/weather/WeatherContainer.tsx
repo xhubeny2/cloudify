@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "@/store";
 import { fetchWeatherRequest } from "@/store/weather";
 import { useGeolocation } from "@/hooks";
 import { CurrentWeather } from "./CurrentWeather";
+import { ForecastTable } from "./ForecastTable";
 import { Button, LoaderOverlay, ErrorMessage } from "../ui";
 import "./style.scss";
 
@@ -49,6 +50,7 @@ export function WeatherContainer() {
   return (
     <div className="weather-container">
       <CurrentWeather city={forecast.city} current={forecast.list[0]} />
+      <ForecastTable list={forecast.list} />
 
       <div className="weather-container__actions">
         <Button variant="ghost" size="sm" onClick={handleRefresh}>

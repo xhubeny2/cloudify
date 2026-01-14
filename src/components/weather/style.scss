@@ -106,3 +106,92 @@
 .weather-container__actions {
   text-align: center;
 }
+
+// ======================
+// ForecastGrid
+// ======================
+.forecast-grid {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  font-size: $font-size-sm;
+}
+
+.forecast-grid__header {
+  display: none;
+
+  @include tablet-up {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: $color-text-muted;
+    font-weight: $font-weight-normal;
+  }
+}
+
+.forecast-grid__header-item {
+  justify-self: end;
+}
+
+.forecast-grid__row {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto auto;
+  grid-template-areas:
+    "icon day   temp temp"
+    "icon precip wind wind";
+  gap: $spacing-xs $spacing-sm;
+  align-items: center;
+  padding: $spacing-sm 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @include tablet-up {
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "day icon temp precip wind";
+    gap: $spacing-md;
+  }
+}
+
+.forecast-grid__day {
+  grid-area: day;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+}
+
+.forecast-grid__icon {
+  grid-area: icon;
+  @include flex-center;
+  justify-self: end;
+}
+
+.forecast-grid__temp {
+  grid-area: temp;
+  display: flex;
+  gap: $spacing-sm;
+  justify-self: end;
+}
+
+.forecast-grid__temp-max {
+  font-weight: $font-weight-medium;
+}
+
+.forecast-grid__temp-min {
+  color: $color-text-muted;
+}
+
+.forecast-grid__precip {
+  grid-area: precip;
+  color: $color-text-muted;
+  justify-self: end;
+}
+
+.forecast-grid__wind {
+  grid-area: wind;
+  color: $color-text-muted;
+  justify-self: end;
+}

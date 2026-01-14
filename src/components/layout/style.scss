@@ -1,6 +1,9 @@
 @use '@/styles/variables' as *;
 @use '@/styles/mixins' as *;
 
+// ======================
+// App Header
+// ======================
 .header {
   @include flex-center;
   gap: $spacing-sm;
@@ -48,3 +51,37 @@
   }
 }
 
+// ======================
+// App Footer
+// ======================
+.footer {
+  @include flex-center;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  margin-top: auto;
+}
+
+.footer__separator {
+  opacity: 0.5;
+}
+
+.footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  color: $color-text-muted;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-primary-light;
+  }
+}
+
+.footer__icon {
+  width: 1rem;
+  height: 1rem;
+}

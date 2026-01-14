@@ -1,7 +1,7 @@
 import "./style.scss";
 import InputWrapper from "@/components/search";
 
-function Header() {
+export function Header() {
   return (
     <header className="header">
       <div className="logo-wrapper">
@@ -12,5 +12,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

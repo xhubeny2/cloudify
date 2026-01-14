@@ -1,5 +1,5 @@
 import "./App.scss";
-import Header from "@/components/layout/Header";
+import { Header, Footer } from "@/components/layout";
 import { WeatherContainer } from "@/components/weather";
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
     <main>
       <Header />
       <WeatherContainer />
+      <Footer />
     </main>
   );
 }

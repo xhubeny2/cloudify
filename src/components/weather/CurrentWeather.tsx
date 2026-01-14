@@ -47,7 +47,7 @@ export function CurrentWeather({ city, current }: CurrentWeatherProps) {
             </p>
           </div>
           <div>
-            <p className="current-weather__detail-label">Wind speed</p>
+            <p className="current-weather__detail-label">Wind</p>
             <p className="current-weather__detail-value">
               {Math.round(current.wind.speed)} m/s
             </p>
