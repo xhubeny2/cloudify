@@ -108,7 +108,7 @@
 }
 
 // ======================
-// ForecastGrid
+// ForecastTable
 // ======================
 .forecast-grid {
   display: flex;
@@ -148,6 +148,15 @@
 
   &:last-child {
     border-bottom: none;
+  }
+
+  &--clickable {
+    cursor: pointer;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
   }
 
   @include tablet-up {
@@ -195,3 +204,4 @@
   color: $color-text-muted;
   justify-self: end;
 }
+
