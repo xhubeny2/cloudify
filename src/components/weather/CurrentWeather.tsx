@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { WeatherIcon } from "./WeatherIcon";
 import { Card, CardContent } from "../ui";
 import "./style.scss";
@@ -8,7 +9,10 @@ interface CurrentWeatherProps {
   current: ForecastItem;
 }
 
-export function CurrentWeather({ city, current }: CurrentWeatherProps) {
+export const CurrentWeather = memo(function CurrentWeather({
+  city,
+  current,
+}: CurrentWeatherProps) {
   const weather = current.weather[0];
 
   return (
@@ -56,4 +60,4 @@ export function CurrentWeather({ city, current }: CurrentWeatherProps) {
       </CardContent>
     </Card>
   );
-}
+});

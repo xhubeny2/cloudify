@@ -1,3 +1,4 @@
+import { memo, useCallback } from "react";
 import type { ReducedCity } from "@/store/types.ts";
 import { useAppDispatch } from "@/store";
 import { fetchWeatherRequest } from "@/store/weather";
@@ -8,21 +9,20 @@ export type ListItemProps = {
   clearInput: () => void;
 };
 
-function ListItem({ city, clearInput }: ListItemProps) {
+const ListItem = memo(function ListItem({ city, clearInput }: ListItemProps) {
   const dispatch = useAppDispatch();
 
-  const handleClick = () => {
-    console.log(`City selected: ${city.name}, ${city.country}`);
+  const handleClick = useCallback(() => {
     dispatch(fetchWeatherRequest(city.coord));
     dispatch(setSearchResults([]));
     clearInput();
-  };
+  }, [city, dispatch, clearInput]);
 
   return (
     <li onClick={handleClick}>
       {city.name}, {city.country}
     </li>
   );
-}
+});
 
 export default ListItem;

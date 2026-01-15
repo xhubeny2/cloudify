@@ -1,10 +1,16 @@
+import { memo } from "react";
+
 interface WeatherIconProps {
   code: string;
   description: string;
   size?: "sm" | "md" | "lg";
 }
 
-export function WeatherIcon({ code, description, size = "md" }: WeatherIconProps) {
+export const WeatherIcon = memo(function WeatherIcon({
+  code,
+  description,
+  size = "md",
+}: WeatherIconProps) {
   const iconUrl = `https://openweathermap.org/img/wn/${code}@2x.png`;
 
   return (
@@ -14,4 +20,4 @@ export function WeatherIcon({ code, description, size = "md" }: WeatherIconProps
       className={`weather-icon weather-icon--${size}`}
     />
   );
-}
+});

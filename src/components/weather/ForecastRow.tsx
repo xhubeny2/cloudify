@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { WeatherIcon } from "./WeatherIcon";
 import type { ForecastItem } from "@/store/types";
 
@@ -25,10 +25,12 @@ export const ForecastRow = memo(function ForecastRow({
   index,
   onSelect,
 }: ForecastRowProps) {
+  const handleClick = useCallback(() => onSelect(index), [index, onSelect]);
+
   return (
     <div
       className="forecast-grid__row forecast-grid__row--clickable"
-      onClick={() => onSelect(index)}
+      onClick={handleClick}
     >
       <div className="forecast-grid__day">{day.label}</div>
       <div className="forecast-grid__icon">

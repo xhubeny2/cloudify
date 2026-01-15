@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store";
 import { initCitiesRequest, searchCitiesRequest } from "@/store/cities";
 import "./style.scss";
@@ -14,14 +14,17 @@ export function InputWrapper() {
     dispatch(initCitiesRequest());
   }, [dispatch]);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(searchCitiesRequest(e.currentTarget.value));
-    setValue(e.currentTarget.value);
-  };
+  const handleInputChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      dispatch(searchCitiesRequest(e.currentTarget.value));
+      setValue(e.currentTarget.value);
+    },
+    [dispatch],
+  );
 
-  const clearInput = () => {
+  const clearInput = useCallback(() => {
     setValue("");
-  };
+  }, []);
 
   return (
     <div className="input-wrapper">

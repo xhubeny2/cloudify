@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/store";
 import { fetchWeatherRequest } from "@/store/weather";
 import { useGeolocation } from "@/hooks";
@@ -18,7 +18,7 @@ export function WeatherContainer() {
     }
   }, [coordinates, dispatch]);
 
-  const handleRefresh = () => {
+  const handleRefresh = useCallback(() => {
     if (forecast?.city) {
       dispatch(fetchWeatherRequest(forecast.city.coord));
       return;
@@ -26,7 +26,7 @@ export function WeatherContainer() {
     if (coordinates) {
       dispatch(fetchWeatherRequest(coordinates));
     }
-  };
+  }, [forecast, coordinates, dispatch]);
 
   if (geoLoading || loading) {
     return <LoaderOverlay message="Getting the best weather..." />;

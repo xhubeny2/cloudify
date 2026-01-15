@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useAppDispatch } from "@/store";
 import { fetchWeatherRequest } from "@/store/weather";
 import { useGeolocation } from "@/hooks";
@@ -6,11 +7,11 @@ export function LocationButton() {
   const dispatch = useAppDispatch();
   const { refresh, loading } = useGeolocation();
 
-  const handleLocationClick = () => {
+  const handleLocationClick = useCallback(() => {
     refresh((coords) => {
       dispatch(fetchWeatherRequest(coords));
     });
-  };
+  }, [refresh, dispatch]);
 
   return (
     <button
