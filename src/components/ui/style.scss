@@ -1,0 +1,198 @@
+@use "sass:color";
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+// ======================
+// Button
+// ======================
+.btn {
+  font-weight: $font-weight-medium;
+  border-radius: $border-radius-md;
+  transition: background-color $transition-fast, color $transition-fast;
+  cursor: pointer;
+  border: none;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $color-background-dark, 0 0 0 4px $color-primary;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  // Variants
+  &--primary {
+    background-color: $color-primary;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: $color-primary-hover;
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    color: $color-text-muted;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  // Sizes
+  &--sm {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-sm;
+  }
+
+  &--md {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-base;
+  }
+
+  &--lg {
+    padding: $spacing-sm $spacing-lg;
+    font-size: $font-size-lg;
+  }
+}
+
+// ======================
+// ErrorMessage
+// ======================
+.error-message {
+  border-radius: $border-radius-md;
+  background-color: rgba($color-error, 0.1);
+  padding: $spacing-md;
+  text-align: center;
+}
+
+.error-message__text {
+  color: $color-error;
+}
+
+.error-message__retry {
+  margin-top: $spacing-sm;
+  font-size: $font-size-sm;
+  color: $color-error;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    color: color.adjust($color-error, $lightness: -15%);
+  }
+}
+
+// ======================
+// Loader
+// ======================
+.loader {
+  @include flex-center;
+}
+
+.loader__spinner {
+  border-radius: 50%;
+  border: 2px solid $color-text-muted;
+  border-top-color: $color-primary;
+  animation: spin 0.8s linear infinite;
+  width: 3rem;
+  height: 3rem;
+
+  &--sm {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-overlay {
+  @include flex-column-center;
+  padding: $spacing-xxl 0;
+}
+
+.loader-overlay__message {
+  margin-top: $spacing-md;
+  color: $color-text-muted;
+}
+
+// ======================
+// Card
+// ======================
+.card {
+  background-color: $color-background-dark;
+  border: 1px solid $color-text-muted;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+}
+
+.card__header {
+  padding: $spacing-md $spacing-lg;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card__content {
+  padding: $spacing-md $spacing-lg;
+}
+
+// ======================
+// Dialog
+// ======================
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  @include flex-center;
+  z-index: 1000;
+}
+
+.dialog {
+  background-color: $color-background-dark;
+  border: 1px solid $color-text-muted;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-lg;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.dialog__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md $spacing-lg;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dialog__title {
+  margin: 0;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+}
+
+.dialog__close {
+  background: none;
+  border: none;
+  color: $color-text-muted;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+
+  &:hover {
+    color: $color-text-dark;
+  }
+}
+
+.dialog__content {
+  padding: $spacing-md $spacing-lg;
+}
