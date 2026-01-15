@@ -378,20 +378,26 @@ VITE_OPENWEATHER_API_KEY=tvuj_api_klic
 
 API klíč zdarma na [OpenWeatherMap](https://openweathermap.org/api).
 
-### Spuštění
+### Spuštění DEV serveru
 
 ```bash
-# Development server
-pnpm dev
+# Nainstalují se závislosti
+pnpm install
 
+# Stáhne city.list.json do /public
+pnpm download-cities 
+
+# Spustí Vite dev server
+pnpm dev 
+```
+### Build a preview produkce
+
+```bash
 # Build pro produkci (stáhne města + TypeScript check + Vite build)
 pnpm build
 
 # Náhled produkčního buildu
 pnpm preview
-
-# Lint
-pnpm lint
 ```
 
 ---
