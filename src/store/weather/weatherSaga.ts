@@ -4,7 +4,7 @@ import {
   fetchWeatherSuccess,
   fetchWeatherFailure,
 } from ".";
-import { fetchForecast } from "../../api/weather";
+import { fetchForecast } from "@/api/weather";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { FetchWeatherPayload, WeatherForecastResponse } from "../types";
 

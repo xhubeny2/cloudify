@@ -1,4 +1,5 @@
-import { createWriteStream } from "fs";
+import { createWriteStream, mkdirSync } from "fs";
+import { dirname } from "path";
 import { pipeline } from "stream/promises";
 import { createGunzip } from "zlib";
 
@@ -14,6 +15,8 @@ async function downloadCities() {
   if (!response.ok) {
     throw new Error(`Failed to download: ${response.status}`);
   }
+
+  mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
 
   const gunzip = createGunzip();
   const output = createWriteStream(OUTPUT_PATH);
