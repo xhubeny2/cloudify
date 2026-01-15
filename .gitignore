@@ -13,8 +13,8 @@ build/
 out/
 
 # Environment Variables (Security)
-.env
-.env.local
+#.env - kvuli demo ucelum je tento radek zakomentovan
+#.env.local - kvuli demo ucelum je tento radek zakomentovan
 .env.*.local
 !.env.example
 
