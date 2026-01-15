@@ -15,7 +15,7 @@ import type {
   WorkerInputMessage,
   WorkerOutputMessage,
 } from "../types.ts";
-import { WORKER_TYPES } from "../../constants";
+import { WORKER_TYPES } from "@/constants";
 
 function createWorkerChannel(
   worker: Worker,
@@ -93,7 +93,7 @@ function* searchCities(
   }
 
   yield delay(300); // 300ms debounce
-  worker.postMessage({ type: "SEARCH_QUERY", payload: query });
+  worker.postMessage({ type: WORKER_TYPES.SEARCH_QUERY, payload: query });
 }
 
 export function* cityRootSaga() {
